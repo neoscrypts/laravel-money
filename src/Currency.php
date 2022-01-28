@@ -302,6 +302,18 @@ class Currency implements Arrayable, Jsonable, JsonSerializable, Renderable
     }
 
     /**
+     * setPrecision
+     *
+     * @param int $precision
+     * @return $this
+     */
+    public function setPrecision(int $precision)
+    {
+        $this->precision = $precision;
+        return $this;
+    }
+
+    /**
      * equals.
      *
      * @param \Akaunting\Money\Currency $currency
