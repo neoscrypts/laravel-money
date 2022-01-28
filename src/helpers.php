@@ -33,7 +33,6 @@ if (!function_exists('currency')) {
         if (is_int($precision)) {
             return (new Currency($currency))->setPrecision($precision);
         }
-
         return new Currency($currency);
     }
 }
