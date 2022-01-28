@@ -13,13 +13,9 @@ if (!function_exists('money')) {
      *
      * @return \Akaunting\Money\Money
      */
-    function money($amount, $currency = null, $convert = false)
+    function money($amount, $currency = null, $convert = false, int $precision = null)
     {
-        if (is_null($currency)) {
-            $currency = env('DEFAULT_CURRENCY', 'USD');
-        }
-
-        return new Money($amount, currency($currency), $convert);
+        return new Money($amount, currency($currency ?: 'USD', $precision), $convert);
     }
 }
 
@@ -28,11 +24,16 @@ if (!function_exists('currency')) {
      * Instance of currency class.
      *
      * @param string $currency
+     * @param int|null $precision
      *
      * @return \Akaunting\Money\Currency
      */
-    function currency($currency)
+    function currency($currency, int $precision = null)
     {
+        if (is_int($precision)) {
+            return (new Currency($currency))->setPrecision($precision);
+        }
+
         return new Currency($currency);
     }
 }
