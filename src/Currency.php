@@ -310,6 +310,7 @@ class Currency implements Arrayable, Jsonable, JsonSerializable, Renderable
     public function setPrecision(int $precision)
     {
         $this->precision = $precision;
+
         return $this;
     }
 
